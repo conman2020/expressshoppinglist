@@ -33,7 +33,7 @@ router.get("/", function (req, res) {
     }
     foundItem.name = req.body.name
     foundItem.price =req.body.price
-    res.json({ item: foundItem.name, price: foundItem.price })
+    res.json({ item: foundItem})
   })
   
   router.delete("/:name", function (req, res) {
@@ -46,5 +46,6 @@ router.get("/", function (req, res) {
   })
   
   module.exports = router;
+ 
 
 
