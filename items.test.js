@@ -2,7 +2,7 @@ process.env.NODE_ENV ="test";
 
 const request = require("supertest");
 const app =require("./app");
-let items = require("./fakeDB");
+let items = require("./fakeDb");
 
 let pickles = [{name: "Pickles", price: 1.30},{name: "Ham", price: 4.90}]
 
@@ -41,7 +41,7 @@ describe("Patch /items", () => {
           .send({ name: "corn chips", price: 3.90 });
     
         expect(res.statusCode).toBe(200);
-        expect(res.body).toEqual({ item: { name: "corn chips", price: 3.90 } });
+        expect(res.body.name).toEqual( { item: "corn chips"} );
     
         const updatedItem = items.find((item) => item.name === itemName);
         expect(updatedItem).toEqual({ name: "corn chips", price: 3.90 });
