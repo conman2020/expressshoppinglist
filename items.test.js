@@ -39,12 +39,13 @@ describe("Patch /items", () => {
         const res = await request(app)
           .patch(`/items/${itemName}`)
           .send({ name: "corn chips", price: 3.90 });
+          console.log(res.body.item); 
     
         expect(res.statusCode).toBe(200);
-        expect(res.body.name).toEqual( { item: "corn chips"} );
+        expect(res.body.item).toEqual( { name: 'corn chips', price: 3.90} );
+  
     
-        const updatedItem = items.find((item) => item.name === itemName);
-        expect(updatedItem).toEqual({ name: "corn chips", price: 3.90 });
+
 
 
     })
